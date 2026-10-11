@@ -20,29 +20,32 @@ def profile_csv(path: Path) -> dict:
     }
 
     try:
+        # Detect the text encoding using a small sample.
         with path.open("rb") as file:
             sample_bytes = file.read(65536)
 
         try:
+            sample_bytes.decode("utf-8-sig")
             encoding = "utf-8-sig"
-            sample_text = sample_bytes.decode(encoding)
         except UnicodeDecodeError:
             encoding = "cp1252"
-            sample_text = sample_bytes.decode(encoding)
 
         result["encoding"] = encoding
 
-        try:
-            dialect = csv.Sniffer().sniff(
-                sample_text, delimiters=",;\t|"
-            )
-        except csv.Error:
-            dialect = csv.excel
-
+        # Use explicit CSV settings instead of guessing the dialect.
         with path.open(
-            "r", encoding=encoding, newline=""
+            "r",
+            encoding=encoding,
+            newline="",
         ) as file:
-            reader = csv.reader(file, dialect, strict=True)
+            reader = csv.reader(
+                file,
+                delimiter=",",
+                quotechar='"',
+                doublequote=True,
+                strict=True,
+            )
+
             columns = next(reader, None)
 
             if not columns or not any(c.strip() for c in columns):
@@ -61,7 +64,7 @@ def profile_csv(path: Path) -> dict:
                 for index in range(len(columns)):
                     value = row[index] if index < len(row) else ""
 
-                    if value is None or not value.strip():
+                    if not value.strip():
                         result["blank_counts"][index] += 1
 
     except (OSError, UnicodeError, csv.Error) as exc:
