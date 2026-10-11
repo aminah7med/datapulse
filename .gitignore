@@ -23,5 +23,5 @@ htmlcov/
 Thumbs.db
 
 # Local data and logs
-data/
+
 logs/
