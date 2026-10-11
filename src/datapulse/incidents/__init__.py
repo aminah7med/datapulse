@@ -1,0 +1,1 @@
+"""Data incident lifecycle boundaries."""
