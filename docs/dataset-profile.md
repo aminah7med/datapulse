@@ -1,6 +1,6 @@
 # DataPulse — Dataset Profile
 
-Generated: 2026-10-11 21:42 UTC
+Generated: 2026-10-11 21:51 UTC
 Source directory: `data\raw`
 
 ## olist_customers_dataset.csv
@@ -73,19 +73,19 @@ Source directory: `data\raw`
 
 - File size: 13.78 MiB
 - Encoding: `utf-8-sig`
-- Rows: 99,256
+- Rows: 99,224
 - Columns: 7
-- Rows with inconsistent field counts: 121
+- Rows with inconsistent field counts: 0
 
 ### Columns and blank values
 
-- `review_id`: 6 blank values
-- `order_id`: 15 blank values
-- `review_score`: 16 blank values
-- `review_comment_title`: 87,686 blank values
-- `review_comment_message`: 58,305 blank values
-- `review_creation_date`: 50 blank values
-- `review_answer_timestamp`: 52 blank values
+- `review_id`: 0 blank values
+- `order_id`: 0 blank values
+- `review_score`: 0 blank values
+- `review_comment_title`: 87,658 blank values
+- `review_comment_message`: 58,274 blank values
+- `review_creation_date`: 0 blank values
+- `review_answer_timestamp`: 0 blank values
 
 ## olist_orders_dataset.csv
 
