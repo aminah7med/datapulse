@@ -1,9 +1,8 @@
 
 import argparse
 import csv
-from datetime import datetime, timezone
 from pathlib import Path
-
+from datetime import UTC, datetime
 
 def profile_csv(path: Path) -> dict:
     """Profile a CSV file without loading all rows into memory."""
