@@ -78,7 +78,7 @@ def write_report(profiles: list, output: Path, raw_dir: Path) -> None:
     lines = [
         "# DataPulse — Dataset Profile",
         "",
-        f"Generated: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}",
+        f"Generated: {datetime.now(UTC).strftime('%Y-%m-%d %H:%M UTC')}",
         f"Source directory: `{raw_dir}`",
         "",
     ]
