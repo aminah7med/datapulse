@@ -22,10 +22,12 @@ package-dir = {"" = "src"}
 [tool.setuptools.packages.find]
 where = ["src"]
 
+
 [tool.pytest.ini_options]
 testpaths = ["tests/unit", "tests/integration"]
 python_files = ["test_*.py"]
 addopts = "-ra"
+pythonpath = ["."]
 
 [tool.ruff]
 line-length = 100
