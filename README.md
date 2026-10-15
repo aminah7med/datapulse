@@ -120,7 +120,6 @@ datapulse/
 │   │   └── test_project_structure.py
 │   └── integration/
 │       └── .gitkeep
-└── .env.example                  # Local environment template
 ```
 
 ## Dataset and Attribution
