@@ -10,7 +10,7 @@ def profile_csv(path: Path) -> dict:
 
     result = {
         "name": path.name,
-        "size_bytes": path.stat().st_size,
+        "size_bytes": None,
         "encoding": "utf-8-sig",
         "columns": [],
         "row_count": 0,
@@ -20,6 +20,8 @@ def profile_csv(path: Path) -> dict:
     }
 
     try:
+        result["size_bytes"] = path.stat().st_size
+
         # Detect the text encoding using a small sample.
         with path.open("rb") as file:
             sample_bytes = file.read(65536)
@@ -94,7 +96,11 @@ def write_report(profiles: list, output: Path, raw_dir: Path) -> None:
         lines.extend([
             f"## {item['name']}",
             "",
-            f"- File size: {item['size_bytes'] / (1024 ** 2):.2f} MiB",
+            (
+                f"- File size: {item['size_bytes'] / (1024 ** 2):.2f} MiB"
+                if item["size_bytes"] is not None
+                else "- File size: unavailable"
+            ),
             f"- Encoding: `{item['encoding']}`",
             f"- Rows: {item['row_count']:,}",
             f"- Columns: {len(item['columns'])}",

@@ -98,8 +98,9 @@ datapulse/
 │   └── raw/                      # Source CSV data files
 ├── database/                     # Planned schema and storage work
 ├── airflow/                      # Planned Airflow configuration
-├── requirements/                 # Dependency definitions (planned)
+├── requirements/                 # Optional dependency files and guidance
 ├── scripts/
+│   ├── inspect_review_anomalies.py # Review-row inspection utility
 │   └── profile_dataset.py        # CSV profiling CLI
 ├── src/
 │   └── datapulse/
@@ -119,7 +120,7 @@ datapulse/
 │   │   └── test_project_structure.py
 │   └── integration/
 │       └── .gitkeep
-└── .env.example
+└── .env.example                  # Local environment template
 ```
 
 ## Dataset and Attribution

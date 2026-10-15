@@ -3,7 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from scripts.profile_dataset import profile_csv
+from scripts.profile_dataset import profile_csv, write_report
 
 
 class TestProfileCsv(unittest.TestCase):
@@ -44,6 +44,21 @@ class TestProfileCsv(unittest.TestCase):
             self.assertEqual(result["row_count"], 3)
             self.assertEqual(result["malformed_rows"], 2)
             self.assertEqual(result["blank_counts"], [0, 1])
+
+    def test_reports_missing_file_without_raising(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            raw_dir = Path(tmp)
+            path = raw_dir / "missing.csv"
+            output = raw_dir / "report.md"
+
+            result = profile_csv(path)
+            write_report([result], output, raw_dir)
+            report = output.read_text(encoding="utf-8")
+
+            self.assertIsNotNone(result["error"])
+            self.assertIsNone(result["size_bytes"])
+            self.assertIn("- File size: unavailable", report)
+            self.assertIn("**Processing error:**", report)
 
 
 if __name__ == "__main__":
