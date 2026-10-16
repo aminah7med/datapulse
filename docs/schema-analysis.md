@@ -1,6 +1,6 @@
 # DataPulse — Source Schema and Relationship Analysis
 
-Generated: 2026-10-16 14:49 UTC
+Generated: 2026-10-16 15:06 UTC
 Source directory: `data\raw`
 
 This report is analysis-only. It does not alter source files, create database tables, or deduplicate records.
