@@ -5,7 +5,7 @@ Source directory: `data\raw`
 
 This report is analysis-only. It does not alter source files, create database tables, or deduplicate records.
 
-Null means an empty or whitespace-only CSV field. Candidate-key duplicate counts are repeated complete key values beyond their first occurrence. Referential-integrity counts include every source row; blank foreign keys are reported separately from orphans.
+null means an empty or whitespace-only CSV field. Candidate-key duplicate counts are repeated complete key values beyond their first occurrence. Referential-integrity counts include every source row; blank foreign keys are reported separately from orphans.
 
 ## Dataset schemas
 
